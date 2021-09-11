@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+Listado Productos
+{% endblock title %}
+
+{% block content %}
+
+
+<h1>Hola Mundo</h1>
+
+    <a href="{% url 'gestion:create' %}">Crear</a>
+
+ {% for p in products %}
+    <h3>{{ p.title }}</h3>
+
+    <a href="{% url 'gestion:show' p.id %}">Ver</a>
+    <a href="{% url 'gestion:update' p.id %}">Act</a>
+    <a href="{% url 'gestion:delete' p.id %}">Borrar</a>
+
+ {% endfor %}
+
+
+ <nav>
+
+    {% if products.has_previous  %}
+        <a href="?page={{ products.previous_page_number }}">Prev</a>
+    {% endif %}
+
+    {% for i in products.paginator.page_range %}
+        <a href="?page={{ i }}">{{i }}</a>
+    {% endfor %}
+
+        {% if products.has_next  %}
+        <a href="?page={{ products.next_page_number }}">Next</a>
+    {% endif %}
+    
+
+ </nav>
+{% endblock  %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Crear
+{% endblock title %}
+
+{% block content %}
+ 
+<form method="post">
+
+    {% csrf_token %}
+
+    {{ form }}
+
+    <button type="submit">Enviar</button>
+
+</form>
+
+    
+{% endblock %}
